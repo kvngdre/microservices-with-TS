@@ -9,10 +9,10 @@ interface BaseAPIErrorArgs extends ApiErrorArgs {
 
 class BaseAPIError extends Error {
   public readonly name: string
-  protected readonly httpCode: HttpCodes
-  protected readonly description?: string
-  protected readonly data?: any
-  protected readonly isOperational: boolean = true
+  public readonly httpCode: HttpCodes
+  public readonly description?: string
+  public readonly data?: any
+  public readonly isOperational: boolean = true
 
   constructor(args: BaseAPIErrorArgs) {
     super(args.message)
