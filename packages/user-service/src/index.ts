@@ -1,11 +1,10 @@
-import dotenv from 'dotenv'
-dotenv.config({ path: '.env.dev' })
 import express from 'express'
 
+import config from './config'
 import appLoader from './loaders'
 
 const app = express()
-const port = process.env.PORT
+const port = config.port
 
 appLoader.init(app)
 

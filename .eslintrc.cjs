@@ -20,7 +20,7 @@ module.exports = {
   // ignorePatterns: ['**/*.js'],
   rules: {
     semi: ['error', 'never'],
-    indent: ['error', 2],
+    // indent: ['error', 2],
     quotes: ['error', 'single'],
   }
 }

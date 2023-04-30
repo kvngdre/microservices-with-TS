@@ -1,4 +1,4 @@
-import { type Router, type Application } from 'express'
+import { type Application } from 'express'
 import expressLoader from './express.loader'
 
 
