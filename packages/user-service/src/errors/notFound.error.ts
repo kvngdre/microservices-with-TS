@@ -1,6 +1,6 @@
-import BaseAPIError from './BaseAPIError'
-import ApiErrorArgs from '../interfaces/ApiErrorArgs'
-import HttpCodes from '../interfaces/HttpStatusCodes'
+import BaseAPIError from './baseapi.error'
+import ApiErrorArgs from '../interfaces/apiErrorArgs.interface'
+import HttpCodes from '../utils/HttpStatusCodes'
 
 class NotFoundError extends BaseAPIError {
   constructor(args: ApiErrorArgs) {

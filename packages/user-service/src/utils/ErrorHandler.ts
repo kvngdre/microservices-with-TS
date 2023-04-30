@@ -1,5 +1,5 @@
 import { Inject, Service } from 'typedi'
-import BaseAPIError from '../errors/BaseAPIError'
+import BaseAPIError from '../errors/baseapi.error'
 import Logger from './Logger'
 
 

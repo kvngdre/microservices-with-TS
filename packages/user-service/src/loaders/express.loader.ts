@@ -1,15 +1,18 @@
 import express, {
   type Application,
-  type NextFunction,
   type Request,
-  type Response,
+  type Response
 } from 'express'
 
 import { NotFoundError } from '../errors'
 import config from '../config'
 import getUserRoutes from '../routes/user.routes'
 import errorMiddleware from '../middleware/error.middleware'
+import HttpCodes from '../utils/HttpStatusCodes'
+import { Container } from 'typedi'
+import Logger from '../utils/Logger'
 
+const logger: Logger = Container.get(Logger)
 
 export default function expressLoader(app: Application): void {
   app.use(express.json())
@@ -21,13 +24,19 @@ export default function expressLoader(app: Application): void {
 
   app.use(errorMiddleware)
 
-  function resourceNotFoundHandler(_req: Request, _res: Response, next: NextFunction): void {
+  function resourceNotFoundHandler(req: Request, res: Response): void {
     const err = new NotFoundError({
       message: 'Resource Not Found',
-      description:
-        'The requested resource not be found, check URL.'
+      description: 'The requested resource not be found, check URL.'
     })
 
-    next(err)
+    logger.debug('Resource Not Found')
+
+    res.status(HttpCodes.NOT_FOUND).json({
+      success: false,
+      errors: [
+        { name: err.name, message: err.message, description: err.description }
+      ]
+    })
   }
 }

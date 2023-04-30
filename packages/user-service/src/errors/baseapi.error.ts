@@ -1,5 +1,5 @@
-import ApiErrorArgs from '../interfaces/ApiErrorArgs'
-import HttpCodes from '../interfaces/HttpStatusCodes'
+import ApiErrorArgs from '../interfaces/apiErrorArgs.interface'
+import HttpCodes from '../utils/HttpStatusCodes'
 
 interface BaseAPIErrorArgs extends ApiErrorArgs {
   name: string;

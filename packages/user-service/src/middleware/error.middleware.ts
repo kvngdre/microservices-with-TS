@@ -1,6 +1,6 @@
 import { type Request, type Response, type NextFunction } from 'express'
-import BaseAPIError from '../errors/BaseAPIError'
-import HttpCodes from '../interfaces/HttpStatusCodes'
+import BaseAPIError from '../errors/baseapi.error'
+import HttpCodes from '../utils/HttpStatusCodes'
 import { Container } from 'typedi'
 import ErrorHandler from '../utils/ErrorHandler'
 

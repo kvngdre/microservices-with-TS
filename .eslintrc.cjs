@@ -3,7 +3,9 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: ['plugin:@typescript-eslint/recommended'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+  ],
   overrides: [
     {
       // enable the rule specifically for TypeScript files
@@ -20,7 +22,7 @@ module.exports = {
   // ignorePatterns: ['**/*.js'],
   rules: {
     semi: ['error', 'never'],
-    // indent: ['error', 2],
-    quotes: ['error', 'single'],
+    indent: ['error', 2],
+    quotes: ['error', 'single']
   }
 }

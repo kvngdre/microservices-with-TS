@@ -9,6 +9,8 @@ const userController: UserController = Container.get(UserController)
 export default function getUserRoutes(): Router {
   const router = Router()
 
+  router.post('/', userController.addUser)
+
   router.get('/', userController.getUsers)
 
   return router
