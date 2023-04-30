@@ -2,10 +2,10 @@
   "name": "user-service",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc",
+    "start:dev": "ts-node-dev --respawn --watch \"{src,apps,libs}/**/*.ts\" src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
