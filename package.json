@@ -1,0 +1,30 @@
+{
+  "name": "microservices-parent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build:all": "npx lerna run build",
+    "lint": "lerna exec -- eslint . --ext .js,.ts",
+    "lint:fix": "lerna exec -- eslint . --ext .js,.ts --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/user-service"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "eslint": "^8.39.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "lerna": "^6.6.1",
+    "typescript": "^5.0.4"
+  }
+}
