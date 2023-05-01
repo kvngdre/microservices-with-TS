@@ -1,4 +1,3 @@
-import { Container } from 'typedi'
 import { Schema, model } from 'mongoose'
 
 import { type IUserInstanceMethods } from '../interfaces/userModel.interface'
@@ -28,7 +27,5 @@ userSchema.methods.omitPassword = function(): void {
 }
 
 const User = model<IUserRequest, IUserModel>('User', userSchema)
-
-Container.set<typeof User>('userModel', User)
 
 export default User

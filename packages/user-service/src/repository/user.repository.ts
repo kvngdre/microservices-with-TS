@@ -6,7 +6,7 @@ import { type IUserDoc } from '../interfaces/userModel.interface'
 
 @Service()
 class UserRepository {
-  constructor(private readonly userModel: typeof User) {}
+  constructor(private readonly userModel = User) {}
 
   public async addUser(newUserDto: IUserRequest): Promise<IUserDoc> {
     const newUser = new this.userModel(newUserDto)

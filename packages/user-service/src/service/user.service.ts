@@ -1,7 +1,8 @@
 import { Service } from 'typedi'
+
+import type IUserRequest from '../dto/userRequest.dto'
+import type IUserResponse from '../dto/userResponse.dto'
 import UserRepository from '../repository/user.repository'
-import IUserRequest from '../dto/userRequest.dto'
-import IUserResponse from '../dto/userResponse.dto'
 
 @Service()
 class UserService {

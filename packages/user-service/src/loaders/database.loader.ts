@@ -9,18 +9,20 @@ import isDevEnvironment from '../utils/isDevEnvironment'
 const logger: ILogger = Container.get(Logger)
 
 async function connectDatabase(): Promise<void> {
-  mongoose.set('strictQuery', true)
-  await mongoose
-    .connect(config.dbUri, config.dbOptions)
-    .then(() => {
-      const message = 'Database connected 🔌'
-      isDevEnvironment() ? logger.info(message) : console.log(message)
-    })
-    .catch((error) => {
-      isDevEnvironment()
-        ? logger.fatal(error.message, error.stack)
-        : console.log(error.message)
-    })
+  try {
+    mongoose.set('strictQuery', true)
+    await mongoose.connect(config.dbUri, config.dbOptions)
+
+    const message = 'Database Connected ✔'
+    isDevEnvironment() ? logger.info(message) : console.log(message)
+
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      logger.fatal(error.message, error.stack)
+      if (!isDevEnvironment()) console.log(error.message)
+    }
+    process.exit(1)
+  }
 }
 
 export default connectDatabase

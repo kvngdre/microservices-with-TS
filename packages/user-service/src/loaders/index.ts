@@ -9,11 +9,15 @@ import ILogger from '../interfaces/logger.interface'
 const logger: ILogger = Container.get(Logger)
 
 const appLoader = {
-  init: (app: Application): void => {
+  init: async (app: Application): Promise<Application> => {
     expressLoader(app)
-    logger.info('Express loaded ✔')
+    logger.info('Express Loaded ✔')
 
-    connectDatabase()
+    await connectDatabase()
+
+    logger.info('Loading Successful 🚀')
+    
+    return app
   }
 }
 
