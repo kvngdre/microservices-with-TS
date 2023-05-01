@@ -1,5 +1,7 @@
-import AppConfig from './AppConfig.config'
+import appConfig from './AppConfig.config'
+import dbConfig from './db.config'
 
 export default { 
-  ...new AppConfig(),
+  ...appConfig,
+  ...dbConfig
 }

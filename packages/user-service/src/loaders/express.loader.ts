@@ -3,16 +3,17 @@ import express, {
   type Request,
   type Response
 } from 'express'
-
-import { NotFoundError } from '../errors'
-import config from '../config'
-import getUserRoutes from '../routes/user.routes'
-import errorMiddleware from '../middleware/error.middleware'
-import HttpCodes from '../utils/HttpStatusCodes'
 import { Container } from 'typedi'
-import Logger from '../utils/Logger'
 
-const logger: Logger = Container.get(Logger)
+import config from '../config'
+import Logger from '../utils/Logger'
+import { NotFoundError } from '../errors'
+import HttpCodes from '../utils/HttpStatusCodes'
+import getUserRoutes from '../routes/user.routes'
+import ILogger from '../interfaces/logger.interface'
+import errorMiddleware from '../middleware/error.middleware'
+
+const logger: ILogger = Container.get(Logger)
 
 export default function expressLoader(app: Application): void {
   app.use(express.json())

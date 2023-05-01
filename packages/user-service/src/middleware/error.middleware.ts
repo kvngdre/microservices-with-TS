@@ -1,8 +1,8 @@
 import { type Request, type Response, type NextFunction } from 'express'
-import BaseAPIError from '../errors/baseapi.error'
-import HttpCodes from '../utils/HttpStatusCodes'
 import { Container } from 'typedi'
+import BaseAPIError from '../errors/baseapi.error'
 import ErrorHandler from '../utils/ErrorHandler'
+import HttpCodes from '../utils/HttpStatusCodes'
 
 const errorHandler: ErrorHandler = Container.get(ErrorHandler)
 

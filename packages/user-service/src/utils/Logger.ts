@@ -1,20 +1,18 @@
 import { Service } from 'typedi'
 import { addColors, createLogger, format, transports } from 'winston'
+
+import isDevEnvironment from './isDevEnvironment'
+import ILogger from '../interfaces/logger.interface'
+
 const { align, cli, colorize, timestamp, printf, combine } = format
 
-function isDevEnvironment(): boolean {
-  if (process.env.NODE_ENV === 'development') return true
-
-  return false
-}
-
 const customLevels = {
-  levels: { fatal: 0, error: 1, info: 2, warn: 3, debug: 4, silly: 5 },
+  levels: { fatal: 0, error: 1, warn: 2, info: 3, debug: 4, silly: 5 },
   colors: {
     fatal: 'red',
     error: 'red',
-    info: 'green',
     warn: 'yellow',
+    info: 'green',
     debug: 'cyan',
     silly: 'magenta'
   }
@@ -41,8 +39,8 @@ const prodFormatter = combine(
   })
 )
 
-@Service()
-class Logger {
+@Service({ global: true })
+class Logger implements ILogger {
   private readonly logger
 
   constructor() {
@@ -69,12 +67,12 @@ class Logger {
     this.logger.error({ message, meta })
   }
 
-  public info(message: string, meta?: any): void {
-    this.logger.info({ message, meta })
-  }
-
   public warn(message: string, meta?: any): void {
     this.logger.warn({ message, meta })
+  }
+
+  public info(message: string, meta?: any): void {
+    this.logger.info({ message, meta })
   }
 
   public debug(message: string, meta?: any): void {

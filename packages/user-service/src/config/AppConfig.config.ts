@@ -5,8 +5,8 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}`})
 
 class AppConfig {
   public name: string
-  public port: string
-  public version: string
+  public readonly port: string
+  public readonly version: string
 
   constructor() {
     this.name = 'User-Service'
@@ -15,4 +15,4 @@ class AppConfig {
   }
 }
 
-export default AppConfig
+export default new AppConfig()

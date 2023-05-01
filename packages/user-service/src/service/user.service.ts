@@ -11,7 +11,7 @@ class UserService {
     const newUser = await this.userRepository.addUser(newUserDto)
     newUser.omitPassword()
 
-    return newUser as IUserResponse
+    return newUser
   }
 }
 

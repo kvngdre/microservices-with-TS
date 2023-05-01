@@ -1,7 +1,10 @@
-import {  type SchemaOptions, type Document, Schema, model } from 'mongoose'
-import IUserModel, { IUserInstanceMethods } from '../interfaces/userModel.interface'
 import { Container } from 'typedi'
-import IUserRequest from '../dto/userRequest.dto'
+import { Schema, model } from 'mongoose'
+
+import { type IUserInstanceMethods } from '../interfaces/userModel.interface'
+import type IUserModel from '../interfaces/userModel.interface'
+import type IUserRequest from '../dto/userRequest.dto'
+
 
 const userSchema = new Schema<IUserRequest, IUserModel, IUserInstanceMethods>({
   username: {
@@ -26,6 +29,6 @@ userSchema.methods.omitPassword = function(): void {
 
 const User = model<IUserRequest, IUserModel>('User', userSchema)
 
-Container.set('UserModel', User)
+Container.set<typeof User>('userModel', User)
 
 export default User

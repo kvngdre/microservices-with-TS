@@ -1,13 +1,12 @@
 import { Inject, Service } from 'typedi'
+
 import BaseAPIError from '../errors/baseapi.error'
 import Logger from './Logger'
 
-
-@Service()
+@Service({ global: true })
 class ErrorHandler {
-  // private logger: Logger
-  constructor(@Inject() private logger: Logger) {
-  }
+  constructor(private readonly logger: Logger) {}
+
   public isTrustedError(error: Error): boolean {
     if (error instanceof BaseAPIError) {
       return true
