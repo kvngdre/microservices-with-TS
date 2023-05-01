@@ -11,7 +11,7 @@ export default function getUserRoutes(): Router {
 
   router.post('/', userController.addUser)
 
-  router.get('/', userController.getUsers)
+  router.get('/', userController.getAllUsers)
 
   return router
 }

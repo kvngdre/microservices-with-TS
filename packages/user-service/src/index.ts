@@ -1,4 +1,4 @@
-import './loaders/catchExceptionsAndPromiseRejections'
+import './utils/catchExceptionsAndPromiseRejections'
 import 'reflect-metadata'
 import express from 'express'
 

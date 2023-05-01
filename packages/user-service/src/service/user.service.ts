@@ -14,6 +14,12 @@ class UserService {
 
     return newUser
   }
+
+  public async getAllUsers(): Promise<IUserResponse[]> {
+    const foundUsers = await this.userRepository.getAllUsers({ password: false })
+
+    return foundUsers
+  }
 }
 
 export default UserService

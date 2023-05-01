@@ -21,6 +21,12 @@ class UserRepository {
 
     return newUser
   }
+
+  public async getAllUsers(projection: Partial<Record<keyof IUserRequest, boolean>> = {}): Promise<IUserDoc[]> {
+    const foundUsers = this.userModel.find().select(projection)
+
+    return foundUsers
+  }
 }
 
 export default UserRepository

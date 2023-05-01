@@ -1,12 +1,12 @@
 function uncaughtExceptionHandler(): void {
   process.on('uncaughtException', (error) => {
-    console.error('uncaught exception thrown', error.message)
+    console.error('uncaught exception thrown', error.stack)
   })
 }
 
 function unHandledRejectionHandler(): void {
   process.on('unhandledRejection', (error: Error) => {
-    console.error(`Unhandled Rejection ${error.message}`)
+    console.error(`Unhandled Rejection ${error.stack}`)
 
     // ErrorHandler.handleError(error)
   })

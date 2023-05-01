@@ -12,12 +12,14 @@ export default class UserController {
   addUser = async (req: Request, res: Response): Promise<void> => {
     const newUserDto: IUserRequest = req.body
 
-    const newUser: IUserResponse = await this.userService.addUser(newUserDto)
+    const newUser = await this.userService.addUser(newUserDto)
 
     res.status(HttpCodes.CREATED).json(newUser)
   }
 
-  getUsers(req: Request, res: Response): void {
-    res.status(HttpCodes.OK).json({ message: 'user service is running' })
+  getAllUsers = async (req: Request, res: Response): Promise<void> => {
+    const foundUsers = await this.userService.getAllUsers()
+
+    res.status(HttpCodes.OK).json({ message: 'Fetched users', data: foundUsers })
   }
 }
