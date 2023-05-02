@@ -1,5 +1,9 @@
+import ConflictError from './conflict.error'
 import NotFoundError from './notFound.error'
+import ValidationError from './validation.error'
 
 export {
-  NotFoundError
+  ConflictError,
+  NotFoundError,
+  ValidationError
 }

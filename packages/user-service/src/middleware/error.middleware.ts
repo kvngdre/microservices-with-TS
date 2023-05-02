@@ -1,17 +1,17 @@
 import { type Request, type Response, type NextFunction } from 'express'
 import { Container } from 'typedi'
-import BaseAPIError from '../errors/baseapi.error'
+import BaseAPIError from '../errors/baseApi.error'
 import ErrorHandler from '../utils/ErrorHandler'
 import HttpCodes from '../utils/HttpStatusCodes'
 
 const errorHandler: ErrorHandler = Container.get(ErrorHandler)
 
-export default (
+export default async (
   err: Error | BaseAPIError,
   req: Request,
   res: Response,
   next: NextFunction
-): Response => {
+): Promise<Response> => {
   if (err instanceof SyntaxError && 'body' in err) {
     return res.status(HttpCodes.BAD_REQUEST).json({
       success: false,
@@ -19,8 +19,7 @@ export default (
       message: 'Error in request JSON.'
     })
   }
-
-  errorHandler.handleError(err)
+  await errorHandler.handleError(err)
 
   if (errorHandler.isTrustedError(err) && 'httpCode' in err) {
     return res.status(err.httpCode).json({

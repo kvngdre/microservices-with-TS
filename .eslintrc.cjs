@@ -3,9 +3,7 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['standard-with-typescript'],
   overrides: [
     {
       // enable the rule specifically for TypeScript files
@@ -23,6 +21,9 @@ module.exports = {
   rules: {
     semi: ['error', 'never'],
     indent: ['error', 2],
-    quotes: ['error', 'single']
+    quotes: ['error', 'single'],
+    '@typescript-eslint/explicit-function-return-type': 'error',
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/object-curly-spacing': ['error', 'always']
   }
 }

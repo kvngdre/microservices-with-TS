@@ -5,9 +5,9 @@ import express, {
 } from 'express'
 import { Container } from 'typedi'
 
+import { NotFoundError } from '../errors'
 import config from '../config'
 import Logger from '../utils/Logger'
-import { NotFoundError } from '../errors'
 import HttpCodes from '../utils/HttpStatusCodes'
 import getUserRoutes from '../routes/user.routes'
 import ILogger from '../interfaces/logger.interface'

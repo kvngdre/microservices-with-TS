@@ -26,6 +26,10 @@ userSchema.methods.omitPassword = function(): void {
   delete this._doc.password
 }
 
+userSchema.static('isUsernameTaken', async function (username: string): Promise<boolean> {
+  return await this.findOne({ username }) !== null
+})
+
 const User = model<IUserRequest, IUserModel>('User', userSchema)
 
 export default User

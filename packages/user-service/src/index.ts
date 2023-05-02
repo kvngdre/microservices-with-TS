@@ -1,4 +1,5 @@
 import './utils/catchExceptionsAndPromiseRejections'
+import 'express-async-errors'
 import 'reflect-metadata'
 import express from 'express'
 
@@ -19,11 +20,5 @@ async function startApp(): Promise<void> {
     console.error(error.message)
   }
 }
-
-// appLoader.init(app).then(() => {
-//   app.listen(port, () => {
-//     console.log(`User Service Running on Port: ${port}`)
-//   })
-// })
 
 startApp()

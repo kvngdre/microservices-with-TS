@@ -9,16 +9,13 @@ class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   public async addUser(newUserDto: IUserRequest): Promise<IUserResponse> {
-    const newUser = await this.userRepository.addUser(newUserDto)
-    newUser.omitPassword()
+    const userDoc = await this.userRepository.addUser(newUserDto)
 
-    return newUser
+    return { id: userDoc._id.toString() }
   }
 
   public async getAllUsers(): Promise<IUserResponse[]> {
-    const foundUsers = await this.userRepository.getAllUsers({ password: false })
-
-    return foundUsers
+    return await this.userRepository.getAllUsers({ password: false })
   }
 }
 
