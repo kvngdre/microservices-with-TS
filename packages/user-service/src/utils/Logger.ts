@@ -51,9 +51,9 @@ class Logger implements ILogger {
     })
 
     this.logger = createLogger({
-      level: !isDevEnvironment() ? 'silly' : 'error',
+      level: isDevEnvironment() ? 'silly' : 'error',
       levels: customLevels.levels,
-      transports: [!isDevEnvironment() ? devTransport : prodTransport]
+      transports: [isDevEnvironment() ? devTransport : prodTransport]
     })
 
     addColors(customLevels.colors)

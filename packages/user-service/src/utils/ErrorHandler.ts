@@ -24,7 +24,7 @@ class ErrorHandler {
 
   private handleTrustedError(error: BaseAPIError): void {
     if (error.isOperational) {
-      console.error(error.stack)
+      this.logger.debug(error.message, error.stack)
     } else {
       this.logger.error(error.message, error.stack)
     }
